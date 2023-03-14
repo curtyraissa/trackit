@@ -26,7 +26,7 @@ const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 200px 35px;
+  margin: 130px 35px;
 
   img {
     margin-bottom: 30px;

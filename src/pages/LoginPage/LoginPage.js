@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
+import logo from "../../assets/logo.png"
 
 export const LoginPage = () => {
   
@@ -8,13 +10,13 @@ export const LoginPage = () => {
   
   return (
     <PageContainer>
-      <img/>
+      <img src={logo} alt="logo"/>
       <Form onSubmit={logar}>
         <input type="email" placeholder="E-mail" required />
         <input type="password" placeholder="Senha" required/>
         <button type="submit">Entrar</button>
       </Form>
-      <Text>Não tem uma conta? Cadastre-se!</Text>
+      <Link to="/cadastro"><Text>Não tem uma conta? Cadastre-se!</Text></Link>
     </PageContainer>
   )
 }
@@ -24,8 +26,11 @@ const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #E5E5E5;
   margin: 200px 35px;
+
+  img {
+    margin-bottom: 30px;
+  }
 `
 
 const Form = styled.form`

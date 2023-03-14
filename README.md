@@ -1,6 +1,9 @@
 ![Imagem 1](./layout-projeto.png "Imagem 1")
 
 <h1 align="center">Track it - ReactJS </h1>
+
+## REQUISITOS
+
 - Geral
     - [ ]  Manipule o HTML usando somente React (você não deve manipular o DOM diretamente com `querySelector`, `innerHTML`, `classList`)
     - [ ]  Para controlar os dados dinâmicos da aplicação, utilize as ferramentas de gerenciamento de estado do React (não utilize variáveis globais)

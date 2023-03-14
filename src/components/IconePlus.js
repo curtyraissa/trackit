@@ -2,11 +2,11 @@ import styled from "styled-components"
 
 export const IconePlus = () => {
   return (
-    <IconePlus>+</IconePlus>
+    <Icone>+</Icone>
   )
 }
 
-const IconePlus = styled.div`
+const Icone = styled.div`
   height: 35px;
   width: 40px;
   background-color: #52B6FF;

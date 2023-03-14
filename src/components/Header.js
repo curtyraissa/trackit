@@ -1,9 +1,11 @@
 import styled from "styled-components"
+import trackit from"../assets/trackit.png"
+import { Link } from "react-router-dom"
 
 export const Header = () => {
   return (
     <HeaderContainder>
-      <span>trackIt</span>
+      <Link to="/"><img src={trackit} alt="logo"/></Link>
       <span>avatar</span>
     </HeaderContainder>
   )

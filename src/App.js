@@ -1,14 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LoginPage } from "./pages/LoginPage"
-import { CadastroPage } from "./pages/CadastroPage"
-import { HabitosPage } from "./pages/HabitosPage"
-import { HojePage } from "./pages/HojePage"
-import { HistoricoPage } from "./pages/HistoricoPage"
+import { LoginPage } from "./pages/LoginPage/LoginPage"
+import { CadastroPage } from "./pages/CadastroPage/CadastroPage"
+import { HabitosPage } from "./pages/HabitosPage/HabitosPage"
+import { HojePage } from "./pages/HojePage/HojePage"
+import { HistoricoPage } from "./pages/HistoricoPage/HistoricoPage"
 
 function App() {
   return (
     <BrowserRouter>
-      App
 
       <Routes>
         <Route path="/" element={<LoginPage />} />

@@ -1,7 +1,46 @@
-export const HojePage = () =>{
-    return(
-        <>
-        HojePage
-        </>
-    )
+import styled from "styled-components"
+import { Header } from "../../components/Header"
+import { Footer } from "../../components/Footer"
+import { IconePlus } from "../../components/IconePlus"
+
+export const HojePage = () => {
+  return (
+    <>
+      <Header />
+      <PageContainer>
+        <TextContainer>
+          <h1>Segunda, 17/05</h1>
+          <IconePlus />
+        </TextContainer>
+        <p>Nenhum hábito concluído ainda</p>
+      </PageContainer>
+      <Footer />
+    </>
+  )
 }
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E5E5E5;
+  height: 100vh;
+  padding: 0 30px;
+  p {
+    font-size: 18px;
+    color: #666666;
+    text-align: start;
+  }
+`
+
+const TextContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 0;
+  h1 {
+    font-size: 22px;
+    color: #126BA5;
+  }
+`

@@ -1,21 +1,34 @@
 import styled from "styled-components"
 import logo from "../../assets/logo.png"
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 export const CadastroPage = () => {
+  const [cadastrar, setCadastrar] = useState({
+    email: "",
+    name: "",
+    image: "",
+    password: ""
+  })
 
-  function cadastrar(e) {
+  useEffect(()=>{
+    const promise = axios.post(`${BASE_URL}/auth/sign-up`)
+    promise.then(res => { console.log()})
+    promise.catch(err => { alert("Faltou preencher os dados!")})
+  }, [])
+
+  function criarCadastro(e) {
     e.preventDefault()
   }
 
   return (
     <PageContainer>
-      <img src={logo} alt="logo"/>
-      <Form onSubmit={cadastrar}>
-        <input type="email" placeholder="E-mail" required />
-        <input type="password" placeholder="Senha" required/>
-        <input type="text" placeholder="Nome" required/>
-        <input type="text" placeholder="Foto" required/>
+      <img src={logo} alt="logo" />
+      <Form onSubmit={criarCadastro}>
+        <input type="email" value={email} placeholder="E-mail" onChange={e => setCadastrar(e.target.value)} required />
+        <input type="password" value={password} placeholder="Senha" onChange={e => setCadastrar(e.target.value)} required />
+        <input type="text" value={name} placeholder="Nome" onChange={e => setCadastrar(e.target.value)} required />
+        <input type="text" value={image} placeholder="Foto" onChange={e => setCadastrar(e.target.value)} required />
         <button type="submit">Cadastrar</button>
       </Form>
       <Link to="/"><Text>Já tem uma conta? Faça login!</Text></Link>
@@ -29,7 +42,7 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   color: #E5E5E5;
-  margin: 200px 35px;
+  margin: 130px 35px;
 
   img {
     margin-bottom: 30px;

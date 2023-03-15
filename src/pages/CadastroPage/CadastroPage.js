@@ -1,35 +1,78 @@
 import styled from "styled-components"
+import axios from "axios"
+import { Link, useNavigate } from "react-router-dom"
+import { ThreeDots } from 'react-loader-spinner'
+import { useState } from "react"
+import { BASE_URL } from '../../constants/urls'
 import logo from "../../assets/logo.png"
-import { Link } from "react-router-dom"
-import { useEffect, useState } from "react"
+
 
 export const CadastroPage = () => {
-  const [cadastrar, setCadastrar] = useState({
-    email: "",
-    name: "",
-    image: "",
-    password: ""
-  })
+  const [form, setForm] = useState({ email: "", password: "", name: "", image: "" })
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
-  useEffect(()=>{
-    const promise = axios.post(`${BASE_URL}/auth/sign-up`)
-    promise.then(res => { console.log()})
-    promise.catch(err => { alert("Faltou preencher os dados!")})
-  }, [])
+  function handleForm(e) {
+    const { name, value } = e.value
+    setForm({ ...form, [name]: value })
+  }
 
   function criarCadastro(e) {
     e.preventDefault()
+    setLoading(true)
+
+    axios.post(`${BASE_URL}/auth/sign-up`, form)
+    .then(() => {
+      setLoading(false)
+      navigate("/")
+    })
+    .catch(err => {
+      alert(`Preencha os campos corretamente! ${err.response.data.details[0]}`)
+      setLoading(false)
+      console(err)
+    })
   }
 
   return (
-    <PageContainer>
+    <PageContainer disable={loading}>
       <img src={logo} alt="logo" />
       <Form onSubmit={criarCadastro}>
-        <input type="email" value={email} placeholder="E-mail" onChange={e => setCadastrar(e.target.value)} required />
-        <input type="password" value={password} placeholder="Senha" onChange={e => setCadastrar(e.target.value)} required />
-        <input type="text" value={name} placeholder="Nome" onChange={e => setCadastrar(e.target.value)} required />
-        <input type="text" value={image} placeholder="Foto" onChange={e => setCadastrar(e.target.value)} required />
-        <button type="submit">Cadastrar</button>
+        <input
+          type="email"
+          placeholder="E-mail"
+          name={email}
+          value={form.email}
+          onChange={handleForm}
+          disabled={loading}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          name={password}
+          value={form.password}
+          onChange={handleForm}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Nome"
+          name={name}
+          value={form.name}
+          onChange={handleForm}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Foto"
+          name={image}
+          value={form.image}
+          onChange={handleForm}
+          required
+        />
+        <button type="submit">
+          {loading ? <ThreeDots color="#FFFFFF" height={50} width={50} /> : 'Cadastrar'}
+        </button>
       </Form>
       <Link to="/"><Text>Já tem uma conta? Faça login!</Text></Link>
     </PageContainer>
@@ -57,7 +100,8 @@ const Form = styled.form`
   gap: 6px;
 
   input {
-    background: #FFFFFF;
+    color: ${({ disable }) => disable ? '#AFAFAF' : '#DBDBDB'};
+    background: ${({ disable }) => disable ? '#F2F2F2' : '#FFFFFF'};
     border: 1px solid #D5D5D5;
     border-radius: 5px;
     width: 303px;

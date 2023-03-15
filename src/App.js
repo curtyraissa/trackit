@@ -5,10 +5,12 @@ import { HabitosPage } from "./pages/HabitosPage/HabitosPage"
 import { HojePage } from "./pages/HojePage/HojePage"
 import { HistoricoPage } from "./pages/HistoricoPage/HistoricoPage"
 
+// import { Context } from "./contexts/Context";
+
 function App() {
   return (
+    // <Context.Provider>
     <BrowserRouter>
-
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/cadastro" element={<CadastroPage />} />
@@ -17,6 +19,7 @@ function App() {
         <Route path="/historico" element={<HistoricoPage />} />
       </Routes>
     </BrowserRouter>
+    // </Context.Provider>
   );
 }
 

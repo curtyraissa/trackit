@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <HeaderContainder>
       <Link to="/"><img src={trackit} alt="logo"/></Link>
-      <span>avatar</span>
+      <img className="usuario" src={trackit} alt="usuario"/>
     </HeaderContainder>
   )
 }
@@ -21,5 +21,9 @@ const HeaderContainder = styled.div`
   background: #126BA5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
-  
+  .usuario{
+    width: 51px;
+    height: 51px;
+    border-radius: 50%;
+  }
 `

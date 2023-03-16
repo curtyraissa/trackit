@@ -8,29 +8,30 @@ import logo from "../../assets/logo.png"
 
 
 export const CadastroPage = () => {
-  const [form, setForm] = useState({ email: "", password: "", name: "", image: "" })
+  const [cadastroForm, setCadastroForm] = useState({ email: "", password: "", name: "", image: "" })
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
+  // fiz direto no input
   function handleForm(e) {
     const { name, value } = e.value
-    setForm({ ...form, [name]: value })
+    setCadastroForm({ ...cadastroForm, [name]: value })
   }
 
   function criarCadastro(e) {
     e.preventDefault()
     setLoading(true)
 
-    axios.post(`${BASE_URL}/auth/sign-up`, form)
-    .then(() => {
-      setLoading(false)
-      navigate("/")
-    })
-    .catch(err => {
-      alert(`Preencha os campos corretamente! ${err.response.data.details[0]}`)
-      setLoading(false)
-      console(err)
-    })
+    axios.post(`${BASE_URL}/auth/sign-up`, cadastroForm)
+      .then(() => {
+        setLoading(false)
+        navigate("/")
+      })
+      .catch(err => {
+        alert(`Os dados estão incorretos! ${err.response.data.details[0]}`)
+        setLoading(false)
+        console(err.response.data.details[0])
+      })
   }
 
   return (
@@ -40,38 +41,38 @@ export const CadastroPage = () => {
         <input
           type="email"
           placeholder="E-mail"
-          name={email}
-          value={form.email}
+          name={cadastroForm.email}
           onChange={handleForm}
+          // onChange={(e) => setCadastroForm(e.target.value)}
           disabled={loading}
           required
         />
         <input
           type="password"
           placeholder="Senha"
-          name={password}
-          value={form.password}
+          name={cadastroForm.password}
           onChange={handleForm}
+          // onChange={(e) => setCadastroForm(e.target.value)}
           required
         />
         <input
           type="text"
           placeholder="Nome"
-          name={name}
-          value={form.name}
+          name={cadastroForm.name}
           onChange={handleForm}
-          required
+          // onChange={(e) => setCadastroForm(e.target.value)}
         />
         <input
           type="text"
           placeholder="Foto"
-          name={image}
-          value={form.image}
+          name={cadastroForm.image}
           onChange={handleForm}
+          // onChange={(e) => setCadastroForm(e.target.value)}
           required
         />
         <button type="submit">
           {loading ? <ThreeDots color="#FFFFFF" height={50} width={50} /> : 'Cadastrar'}
+          {/* <ThreeDots color="#FFFFFF" height={50} width={50} /> */}
         </button>
       </Form>
       <Link to="/"><Text>Já tem uma conta? Faça login!</Text></Link>
@@ -100,7 +101,7 @@ const Form = styled.form`
   gap: 6px;
 
   input {
-    color: ${({ disable }) => disable ? '#AFAFAF' : '#DBDBDB'};
+    color: ${({ disable }) => disable ? '#DBDBDB' : '#AFAFAF'};
     background: ${({ disable }) => disable ? '#F2F2F2' : '#FFFFFF'};
     border: 1px solid #D5D5D5;
     border-radius: 5px;
@@ -120,6 +121,12 @@ const Form = styled.form`
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 `
 

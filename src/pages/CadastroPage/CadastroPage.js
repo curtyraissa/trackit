@@ -12,23 +12,24 @@ export const CadastroPage = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
-  // fiz direto no input
-  function handleForm(e) {
-    const { name, value } = e.value
-    setCadastroForm({ ...cadastroForm, [name]: value })
-  }
+  // fiz direto no input, nao funcionou desse jeito
+  // function handleForm(e) {
+  //   const { name, value } = e.value
+  //   setCadastroForm({ ...cadastroForm, [name]: value })
+  // }
 
-  function criarCadastro(e) {
+  function cadastrar(e) {
     e.preventDefault()
     setLoading(true)
 
     axios.post(`${BASE_URL}/auth/sign-up`, cadastroForm)
-      .then(() => {
+      .then((res) => {
         setLoading(false)
         navigate("/")
+        console.log(res)
       })
       .catch(err => {
-        alert(`Os dados estão incorretos! ${err.response.data.details[0]}`)
+        alert(`Os dados estão incorretos! ${err.response.data}`)
         setLoading(false)
         console(err.response.data.details[0])
       })
@@ -37,37 +38,40 @@ export const CadastroPage = () => {
   return (
     <PageContainer disable={loading}>
       <img src={logo} alt="logo" />
-      <Form onSubmit={criarCadastro}>
+      <Form onSubmit={cadastrar}>
         <input
           type="email"
           placeholder="E-mail"
-          name={cadastroForm.email}
-          onChange={handleForm}
-          // onChange={(e) => setCadastroForm(e.target.value)}
+          name="email"
+          // onChange={handleForm}
+          onChange={(e) => setCadastroForm({ ...cadastroForm, [e.target.name]: e.target.value })}
           disabled={loading}
           required
         />
         <input
           type="password"
           placeholder="Senha"
-          name={cadastroForm.password}
-          onChange={handleForm}
-          // onChange={(e) => setCadastroForm(e.target.value)}
+          name="password"
+          // onChange={handleForm}
+          onChange={(e) => setCadastroForm({ ...cadastroForm, [e.target.name]: e.target.value })}
           required
         />
         <input
           type="text"
           placeholder="Nome"
-          name={cadastroForm.name}
-          onChange={handleForm}
-          // onChange={(e) => setCadastroForm(e.target.value)}
+          name="name"
+          // onChange={handleForm}
+          onChange={(e) => setCadastroForm({ ...cadastroForm, [e.target.name]: e.target.value })}
+          disabled={loading}
+          required
         />
         <input
           type="text"
           placeholder="Foto"
-          name={cadastroForm.image}
-          onChange={handleForm}
-          // onChange={(e) => setCadastroForm(e.target.value)}
+          name="image"
+          // onChange={handleForm}
+          onChange={(e) => setCadastroForm({ ...cadastroForm, [e.target.name]: e.target.value })}
+          disabled={loading}
           required
         />
         <button type="submit">

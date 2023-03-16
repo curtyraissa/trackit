@@ -1,20 +1,57 @@
-import { Link } from "react-router-dom"
 import styled from "styled-components"
+import axios from "axios"
+import { Link, useNavigate } from "react-router-dom"
+import { ThreeDots } from 'react-loader-spinner'
+import { useState } from "react"
+import { BASE_URL } from '../../constants/urls'
 import logo from "../../assets/logo.png"
 
 export const LoginPage = () => {
-  
+  const [loginForm, setloginForm] = useState({ email: "", password: "" })
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+
   function logar(e) {
     e.preventDefault()
+    setLoading(true)
+
+    axios.post(`${BASE_URL}/auth/login`, loginForm)
+        .then((res) => {
+        setLoading(false)
+        navigate("/hoje")
+        console.log(res)
+      })
+      .catch(err => {
+        alert(`Os dados estão incorretos! ${err.response.data.message}`)
+        setLoading(false)
+        console(err.response.data.message)
+      })
   }
-  
+
+  console.log(`${BASE_URL}/auth/login`)
   return (
-    <PageContainer>
-      <img src={logo} alt="logo"/>
+    <PageContainer disable={loading}>
+      <img src={logo} alt="logo" />
       <Form onSubmit={logar}>
-        <input type="email" placeholder="E-mail" required />
-        <input type="password" placeholder="Senha" required/>
-        <button type="submit">Entrar</button>
+        <input
+          type="email"
+          placeholder="E-mail"
+          name="email"
+          onChange={(e) => setloginForm({ ...loginForm, [e.target.name]: e.target.value })}
+          disabled={loading}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          name="password"
+          onChange={(e) => setloginForm({ ...loginForm, [e.target.name]: e.target.value })}
+          disabled={loading}
+          required
+        />
+        <button type="submit">
+          {loading ? <ThreeDots color="#FFF" height={50} width={50} /> : 'Entrar'}
+        </button>
       </Form>
       <Link to="/cadastro"><Text>Não tem uma conta? Cadastre-se!</Text></Link>
     </PageContainer>
@@ -60,6 +97,12 @@ const Form = styled.form`
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 `
 

@@ -4,7 +4,7 @@ import { CadastroPage } from "./pages/CadastroPage/CadastroPage"
 import { HabitosPage } from "./pages/HabitosPage/HabitosPage"
 import { HojePage } from "./pages/HojePage/HojePage"
 import { HistoricoPage } from "./pages/HistoricoPage/HistoricoPage"
-import { UserProvider } from "./contexts/context";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   return (

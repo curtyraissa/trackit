@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 export const Header = () => {
   return (
-    <HeaderContainder>
+    <HeaderContainder data-test="header">
       <Link to="/"><img src={trackit} alt="logo"/></Link>
       <img className="usuario" src={trackit} alt="usuario"/>
     </HeaderContainder>

@@ -34,6 +34,7 @@ export const LoginPage = () => {
       <img src={logo} alt="logo" />
       <Form onSubmit={logar}>
         <input
+          data-test="email-input"
           type="email"
           placeholder="E-mail"
           name="email"
@@ -42,6 +43,7 @@ export const LoginPage = () => {
           required
         />
         <input
+          data-test="password-input"
           type="password"
           placeholder="Senha"
           name="password"
@@ -49,11 +51,11 @@ export const LoginPage = () => {
           disabled={loading}
           required
         />
-        <button type="submit">
+        <button data-test="login-btn" type="submit">
           {loading ? <ThreeDots color="#FFF" height={50} width={50} /> : 'Entrar'}
         </button>
       </Form>
-      <Link to="/cadastro"><Text>Não tem uma conta? Cadastre-se!</Text></Link>
+      <Link data-test="singup-lik" to="/cadastro"><Text>Não tem uma conta? Cadastre-se!</Text></Link>
     </PageContainer>
   )
 }

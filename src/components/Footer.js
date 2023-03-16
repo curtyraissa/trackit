@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { CircularProgressbar } from "react-circular-progressbar";
+import 'react-circular-progressbar/dist/styles.css';
 
 export const Footer = () => {
   return (
-    <FooterContainder>
-      <Link to="/habitos"><p>Hábitos</p></Link>
-      <Link to="/hoje">
+    <FooterContainder data-test="menu">
+      <Link data-test="habit-link" to="/habitos"><p>Hábitos</p></Link>
+      <Link data-test="today-link" to="/hoje">
         <Circular>
         <CircularProgressbar 
           text="Hoje"
@@ -17,7 +18,7 @@ export const Footer = () => {
         />
         </Circular>
       </Link>
-      <Link to="/historico"><p>Histórico</p></Link>
+      <Link data-test="history-link" to="/historico"><p>Histórico</p></Link>
     </FooterContainder>
   )
 }

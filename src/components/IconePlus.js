@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const IconePlus = () => {
   return (
-    <Icone>+</Icone>
+    <Icone data-test="habit-create-btn">+</Icone>
   )
 }
 

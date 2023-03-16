@@ -1,16 +1,28 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { CircularProgressbar } from "react-circular-progressbar";
 
 export const Footer = () => {
   return (
-    <HeaderContainder>
-      <p>Hábitos</p>
-        img
-      <p>Histórico</p>
-    </HeaderContainder>
+    <FooterContainder>
+      <Link to="/habitos"><p>Hábitos</p></Link>
+      <Link to="/hoje">
+        <Circular>
+        <CircularProgressbar 
+          text="Hoje"
+          backgroundPadding={9} 
+          strokeWidth={8}
+          value={90} 
+          background
+        />
+        </Circular>
+      </Link>
+      <Link to="/historico"><p>Histórico</p></Link>
+    </FooterContainder>
   )
 }
 
-const HeaderContainder = styled.div`
+const FooterContainder = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,9 +31,35 @@ const HeaderContainder = styled.div`
   height: 70px;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: 0;
+  left: 0;
   p {
     font-size: 18px;
     color: #52B6FF;
+  }
+  a {
+    text-decoration: none;
+  }
+`
+
+export const Circular = styled.div`
+  height: 85px;
+  width: 95px;
+  margin-bottom: 60px;
+  font-size: 20px;
+  
+  .CircularProgressbar-path {
+    stroke: #ffffff;
+  }
+  .CircularProgressbar-trail {
+    stroke: #52B6FF;
+  }
+  .CircularProgressbar-text {
+    fill: #ffffff;
     text-align: start;
+  }
+  .CircularProgressbar-background {
+    fill: #52B6FF;
   }
 `

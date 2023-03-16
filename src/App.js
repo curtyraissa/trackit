@@ -8,7 +8,7 @@ import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   return (
-    <UserProvider>
+    // <UserProvider>
 
       <BrowserRouter>
         <Routes>
@@ -20,7 +20,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-    </UserProvider>
+    // </UserProvider>
   );
 }
 

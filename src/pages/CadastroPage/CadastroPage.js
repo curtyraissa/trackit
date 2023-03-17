@@ -40,6 +40,7 @@ export const CadastroPage = () => {
       <img src={logo} alt="logo" />
       <Form onSubmit={cadastrar}>
         <input
+        data-test="email-input"
           type="email"
           placeholder="E-mail"
           name="email"
@@ -49,6 +50,7 @@ export const CadastroPage = () => {
           required
         />
         <input
+        data-test="password-input"
           type="password"
           placeholder="Senha"
           name="password"
@@ -57,6 +59,7 @@ export const CadastroPage = () => {
           required
         />
         <input
+        data-test="user-name-input"
           type="text"
           placeholder="Nome"
           name="name"
@@ -66,6 +69,7 @@ export const CadastroPage = () => {
           required
         />
         <input
+        data-test="user-image-input"
           type="text"
           placeholder="Foto"
           name="image"
@@ -74,12 +78,12 @@ export const CadastroPage = () => {
           disabled={loading}
           required
         />
-        <button type="submit">
+        <button data-test="signup-btn" type="submit">
           {loading ? <ThreeDots color="#FFFFFF" height={50} width={50} /> : 'Cadastrar'}
           {/* <ThreeDots color="#FFFFFF" height={50} width={50} /> */}
         </button>
       </Form>
-      <Link to="/"><Text>Já tem uma conta? Faça login!</Text></Link>
+      <Link to="/" data-test="login-link" ><Text>Já tem uma conta? Faça login!</Text></Link>
     </PageContainer>
   )
 }

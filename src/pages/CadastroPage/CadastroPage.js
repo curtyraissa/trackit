@@ -1,149 +1,54 @@
-import styled from "styled-components"
-import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
-import { ThreeDots } from "react-loader-spinner"
-import { useState } from "react"
-import { BASE_URL } from "../../constants/urls"
 import logo from "../../assets/logo.png"
-
+import { LoginContainer } from "../LoginPage/LoginStyle"
+import { BASE_URL } from "../../constants/data"
+import { useState } from "react"
+import axios from "axios"
+import { ThreeDots } from "react-loader-spinner"
 
 export const CadastroPage = () => {
-  const [cadastroForm, setCadastroForm] = useState({ email: "", password: "", name: "", image: "" })
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+    const [signUp, setSignUp] = useState({
+        email: "",
+        name: "",
+        image: "",
+        password: ""
+    })
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
-  // fiz direto no input, nao funcionou desse jeito
-  // function handleForm(e) {
-  //   const { name, value } = e.value
-  //   setCadastroForm({ ...cadastroForm, [name]: value })
-  // }
-
-  function cadastrar(e) {
-    e.preventDefault()
-    setLoading(true)
-
-    axios.post(`${BASE_URL}/auth/sign-up`, cadastroForm)
-      .then((res) => {
-        setLoading(false)
-        navigate("/")
-        console.log(res)
-      })
-      .catch(err => {
-        alert(`Os dados estão incorretos! ${err.response.data}`)
-        setLoading(false)
-        console(err.response.data.details[0])
-      })
-  }
-
-  return (
-    <PageContainer disable={loading}>
-      <img src={logo} alt="logo" />
-      <Form onSubmit={cadastrar}>
-        <input
-        data-test="email-input"
-          type="email"
-          placeholder="E-mail"
-          name="email"
-          // onChange={handleForm}
-          onChange={(e) => setCadastroForm({ ...cadastroForm, [e.target.name]: e.target.value })}
-          disabled={loading}
-          required
-        />
-        <input
-        data-test="password-input"
-          type="password"
-          placeholder="Senha"
-          name="password"
-          // onChange={handleForm}
-          onChange={(e) => setCadastroForm({ ...cadastroForm, [e.target.name]: e.target.value })}
-          required
-        />
-        <input
-        data-test="user-name-input"
-          type="text"
-          placeholder="Nome"
-          name="name"
-          // onChange={handleForm}
-          onChange={(e) => setCadastroForm({ ...cadastroForm, [e.target.name]: e.target.value })}
-          disabled={loading}
-          required
-        />
-        <input
-        data-test="user-image-input"
-          type="text"
-          placeholder="Foto"
-          name="image"
-          // onChange={handleForm}
-          onChange={(e) => setCadastroForm({ ...cadastroForm, [e.target.name]: e.target.value })}
-          disabled={loading}
-          required
-        />
-        <button data-test="signup-btn" type="submit">
-          {loading ? <ThreeDots color="#FFFFFF" height={50} width={50} /> : "Cadastrar"}
-          {/* <ThreeDots color="#FFFFFF" height={50} width={50} /> */}
-        </button>
-      </Form>
-      <Link to="/" data-test="login-link" ><Text>Já tem uma conta? Faça login!</Text></Link>
-    </PageContainer>
-  )
-}
-
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #E5E5E5;
-  margin: 130px 35px;
-
-  img {
-    margin-bottom: 30px;
-  }
-`
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  input {
-    color: ${({ disable }) => disable ? "#DBDBDB" : "#AFAFAF"};
-    background: ${({ disable }) => disable ? "#F2F2F2" : "#FFFFFF"};
-    border: 1px solid #D5D5D5;
-    border-radius: 5px;
-    width: 303px;
-    height: 45px;
-    font-size: 18px;
-    padding: 10px;
-  }
-
-  button {
-    width: 303px;
-    height: 45px;
-    background: #52B6FF;
-    border-radius: 5px;
-    border: none;
-    font-size: 20px;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    function signUpUser(e) {
+        e.preventDefault()
+        setLoading(true)
+        const promise = axios.post(`${BASE_URL}/auth/sign-up`, signUp)
+        promise.then(() => {
+            setLoading(false)
+            navigate("/")
+        })
+        promise.catch(res => {
+            alert(`Preencha os campos corretamente! ${res.response.data.details[0]}`)
+            setLoading(false)
+        })
     }
-  }
-`
 
-const Text = styled.div`
-  margin-top: 25px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  text-align: center;
-  text-decoration-line: underline;
-  color: #52B6FF;
-`
+    return (
+        <LoginContainer disable={loading}>
+            <img src={logo} alt="logo" />
+            <form onSubmit={signUpUser}>
+                <input data-test="email-input" type="email" name="email" placeholder="email" required
+                    onChange={(e) => setSignUp({ ...signUp, [e.target.name]: e.target.value })} disabled={loading} />
+                <input data-test="password-input" type="password" name="password" placeholder="senha" required
+                    onChange={(e) => setSignUp({ ...signUp, [e.target.name]: e.target.value })} disabled={loading} />
+                <input data-test="user-name-input" type="text" name="name" placeholder="nome" required
+                    onChange={(e) => setSignUp({ ...signUp, [e.target.name]: e.target.value })} disabled={loading} />
+                <input data-test="user-image-input" type="text" name="image" placeholder="foto" required
+                    onChange={(e) => setSignUp({ ...signUp, [e.target.name]: e.target.value })} disabled={loading} />
+                <button data-test="signup-btn" type="submit">
+                    {loading ? <ThreeDots color="#FFF" height={50} width={50} /> : "Cadastrar"}
+                </button>
+            </form>
+            <Link data-test="login-link" to="/">
+                <p>Já tem uma conta? Faça login!</p>
+            </Link>
+        </LoginContainer>
+    )
+}

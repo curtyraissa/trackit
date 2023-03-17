@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import UserContext from "../../contexts/UserContext"
 import { HeaderContainer, Logout, Perfil } from "./HeaderStyle"
 
@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <HeaderContainer data-test="header">
-      <h1>TrackIt</h1>
+      <Link to="/"><h1>TrackIt</h1></Link>
       <Perfil>
         <Logout onClick={logout}>
           <ion-icon name="log-out-outline"></ion-icon>

@@ -1,25 +1,23 @@
 import styled from "styled-components"
 
 export const HojeContainer = styled.div`
-    margin-top: 98px;
-    margin-left: 17px;
-    margin-bottom: 150px;
-
-    h1 {
-        color: #126BA5;
-        font-size: 23px;
-    }
-
-    h3 {
-        font-size: 18px;
-        color: #BABABA;
-        margin-bottom: 28px;
-        margin-top: 5px;
-    }
-
-    .progress {
-        color: #8FC549;
-    }
+    margin: 98px 0 150px 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  h1 {
+    color: #126BA5;
+    font-size: 23px;
+  }
+  h3 {
+    font-size: 18px;
+    color: #BABABA;
+    margin: 5px 0 28px;
+  }
+  .progress {
+    color: #8FC549;
+  }
 `
 
 export const TrackCard = styled.div`

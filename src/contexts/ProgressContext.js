@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 const ProgressContext = createContext()
 
-export const ProgressProvider = ({ children }) => {
+export function ProgressProvider({ children }) {
   const [progress, setProgress] = useState(0)
   const [length, setLength] = useState(0)
   const progressCount = Math.round(progress * length / 100)
@@ -31,9 +31,9 @@ export const ProgressProvider = ({ children }) => {
   }
 
   function decrementProgress() {
-    const calculo = Math.round(((progressCount - 1) * 100) / (length - 1))
-    const decrementProgress = calculo
+    const calc = Math.round(((progressCount - 1) * 100) / (length - 1))
     setLength(length - 1)
+    const decrementProgress = calc
     setProgress(decrementProgress)
   }
 
@@ -43,3 +43,5 @@ export const ProgressProvider = ({ children }) => {
     </ProgressContext.Provider>
   )
 }
+
+export default ProgressContext

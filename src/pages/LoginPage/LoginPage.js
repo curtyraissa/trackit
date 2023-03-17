@@ -36,7 +36,7 @@ export const LoginPage = () => {
                     onChange={(e) => setSignIn({ ...signIn, [e.target.name]: e.target.value })} disabled={loading} />
                 <input data-test="password-input" type="password" name="password" placeholder="senha" required
                     onChange={(e) => setSignIn({ ...signIn, [e.target.name]: e.target.value })} disabled={loading} />
-                <button data-test="login-btn" type="submit">
+                <button data-test="login-btn" type="submit" disabled={loading}>
                     {loading ? <ThreeDots color="#FFF" height={50} width={50} /> : "Entrar"}
                 </button>
             </form>

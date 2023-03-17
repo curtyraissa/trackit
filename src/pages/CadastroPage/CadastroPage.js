@@ -7,12 +7,7 @@ import axios from "axios"
 import { ThreeDots } from "react-loader-spinner"
 
 export const CadastroPage = () => {
-  const [signUp, setSignUp] = useState({
-    email: "",
-    name: "",
-    image: "",
-    password: ""
-  })
+  const [signUp, setSignUp] = useState({ email: "", name: "", image: "", password: "" })
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -43,7 +38,7 @@ export const CadastroPage = () => {
         <input data-test="user-image-input" type="text" name="image" placeholder="foto" required
           onChange={(e) => setSignUp({ ...signUp, [e.target.name]: e.target.value })} disabled={loading} />
         <button data-test="signup-btn" type="submit" disabled={loading}>
-          {loading ? <ThreeDots color="#FFF" height={50} width={50} /> : "Cadastrar"}
+          {loading ? <ThreeDots color="#FFFFFF" height={50} width={50} /> : "Cadastrar"}
         </button>
       </form>
       <Link data-test="login-link" to="/">

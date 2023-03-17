@@ -4,10 +4,9 @@ export const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     font-family: "Playball";
     font-size: 39px;
-    color: #fff;
+    color: #FFFFFF;
     background-color: #126BA5;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     height: 70px;
@@ -18,7 +17,6 @@ export const HeaderContainer = styled.div`
     padding: 0 18px;
     box-sizing: border-box;
     z-index: 1;
-
     img {
         border-radius: 100%;
         width: 51px;
@@ -40,7 +38,7 @@ export const Perfil = styled.div`
 
     &:hover div:first-child {
         width: 50px;
-        background-color: #fff;
+        background-color: #FFFFFF;
     }
 
     div:first-child:hover {

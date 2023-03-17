@@ -46,13 +46,12 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        box-sizing: border-box;
-        font-family: "Lexend Deca", sans-serif;
-        background-color: ${({ isLogin }) => isLogin ? "#f2f2f2" : "#fff"};
+      background-color: ${({ isLogin }) => isLogin ? "#f2f2f2" : "#FFFFFF"};
+      font-family: "Lexend Deca", sans-serif;
     }
 
     * {
-        box-sizing: border-box;
-        font-family: "Lexend Deca", sans-serif;
+      box-sizing: border-box;
+      font-family: "Lexend Deca", sans-serif;
     }
 `

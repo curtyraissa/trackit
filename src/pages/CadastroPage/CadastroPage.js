@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
-import { ThreeDots } from 'react-loader-spinner'
+import { ThreeDots } from "react-loader-spinner"
 import { useState } from "react"
-import { BASE_URL } from '../../constants/urls'
+import { BASE_URL } from "../../constants/urls"
 import logo from "../../assets/logo.png"
 
 
@@ -79,7 +79,7 @@ export const CadastroPage = () => {
           required
         />
         <button data-test="signup-btn" type="submit">
-          {loading ? <ThreeDots color="#FFFFFF" height={50} width={50} /> : 'Cadastrar'}
+          {loading ? <ThreeDots color="#FFFFFF" height={50} width={50} /> : "Cadastrar"}
           {/* <ThreeDots color="#FFFFFF" height={50} width={50} /> */}
         </button>
       </Form>
@@ -109,8 +109,8 @@ const Form = styled.form`
   gap: 6px;
 
   input {
-    color: ${({ disable }) => disable ? '#DBDBDB' : '#AFAFAF'};
-    background: ${({ disable }) => disable ? '#F2F2F2' : '#FFFFFF'};
+    color: ${({ disable }) => disable ? "#DBDBDB" : "#AFAFAF"};
+    background: ${({ disable }) => disable ? "#F2F2F2" : "#FFFFFF"};
     border: 1px solid #D5D5D5;
     border-radius: 5px;
     width: 303px;

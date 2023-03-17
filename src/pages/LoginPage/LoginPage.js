@@ -1,14 +1,16 @@
 import styled from "styled-components"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
-import { ThreeDots } from 'react-loader-spinner'
-import { useState } from "react"
-import { BASE_URL } from '../../constants/urls'
+import { ThreeDots } from "react-loader-spinner"
+import { useContext, useState } from "react"
+import { BASE_URL } from "../../constants/urls"
+import { UserContext } from "../../contexts/UserContext"
 import logo from "../../assets/logo.png"
 
 export const LoginPage = () => {
   const [loginForm, setloginForm] = useState({ email: "", password: "" })
   const [loading, setLoading] = useState(false)
+  // const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
 
   function logar(e) {
@@ -16,8 +18,9 @@ export const LoginPage = () => {
     setLoading(true)
 
     axios.post(`${BASE_URL}/auth/login`, loginForm)
-        .then((res) => {
+      .then((res) => {
         setLoading(false)
+        // setUser({ image: res.data.image, token: res.data.token })
         navigate("/hoje")
         console.log(res)
       })
@@ -52,7 +55,7 @@ export const LoginPage = () => {
           required
         />
         <button data-test="login-btn" type="submit">
-          {loading ? <ThreeDots color="#FFF" height={50} width={50} /> : 'Entrar'}
+          {loading ? <ThreeDots color="#FFF" height={50} width={50} /> : "Entrar"}
         </button>
       </Form>
       <Link data-test="singup-lik" to="/cadastro"><Text>Não tem uma conta? Cadastre-se!</Text></Link>

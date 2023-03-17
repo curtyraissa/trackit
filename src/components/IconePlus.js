@@ -6,11 +6,13 @@ export const IconePlus = () => {
   )
 }
 
-const Icone = styled.div`
+const Icone = styled.button`
   height: 35px;
   width: 40px;
   background-color: #52B6FF;
   color: #ffffff;
   font-size: 28px;
   border-radius: 5px;
+  border: none;
+  cursor: pointer;
 `

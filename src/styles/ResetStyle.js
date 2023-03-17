@@ -37,7 +37,7 @@ const ResetStyle = createGlobalStyle`
 	}
 	blockquote:before, blockquote:after,
 	q:before, q:after {
-		content: '';
+		content: "";
 		content: none;
 	}
 	table {

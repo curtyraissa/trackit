@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <HeaderContainer data-test="header">
-      <Link to="/"><h1>TrackIt</h1></Link>
+      <Link to="/habitos"><h1>TrackIt</h1></Link>
       <Perfil>
         <Logout onClick={logout}>
           <ion-icon name="log-out-outline"></ion-icon>

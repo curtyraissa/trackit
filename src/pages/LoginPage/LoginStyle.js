@@ -25,7 +25,6 @@ export const LoginContainer = styled.div`
     font-size: 20px;
     padding-left: 11px;
     margin-bottom: 6px;
-    box-sizing: border-box;
   }
   input::placeholder {
     color: #DBDBDB;

@@ -15,16 +15,18 @@ export const HeaderContainer = styled.div`
     top: 0;
     left: 0;
     padding: 0 18px;
-    box-sizing: border-box;
     z-index: 1;
     img {
-        border-radius: 100%;
-        width: 51px;
-        height: 51px;
-        object-fit: cover;
+      border-radius: 100%;
+      width: 51px;
+      height: 51px;
+      object-fit: cover;
+    }
+    a {
+      text-decoration: none;
+      color: #ffffff;
     }
 `
-
 export const Perfil = styled.div`
     display: flex;
     align-items: center;

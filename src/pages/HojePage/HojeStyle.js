@@ -23,27 +23,22 @@ export const HojeContainer = styled.div`
 export const TrackCard = styled.div`
     display: flex;
     justify-content: space-between;
-
     width: 340px;
     min-height: 94px;   
     background-color: #FFFFFF;
     border-radius: 5px;
-    box-sizing: border-box;
     padding: 15px;
     color: #666666;
     margin-bottom: 10px;
-
     h2 {
         font-size: 20px;
         margin-bottom: 8px;
         width: 240px;
         word-wrap: break-word;
     }
-
     p {
         font-size: 13px;
     }
-
     button {
         display: flex;
         justify-content: center;

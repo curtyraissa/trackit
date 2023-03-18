@@ -10,7 +10,6 @@ export const FooterContainer = styled.div`
     position: fixed;
     bottom: 0;
     left: 0;
-    box-sizing: border-box;
     padding: 0 33px;
     font-size: 18px;
   h2 {
@@ -22,7 +21,6 @@ export const ProgressBar = styled.div`
     height: 91px;
     width: 91px;
     margin-bottom: 60px;
-
     .CircularProgressbar-path {
         stroke: #FFFFFF;
     }

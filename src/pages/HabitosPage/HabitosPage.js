@@ -50,7 +50,7 @@ export const HabitosPage = () => {
           <div>
             {days.map((day, i) => {
               return (
-                <DayCard data-test="habit-day" key={i} name={day.name} index={i} days={days} daysNumbers={daysNumbers}
+                <DayCard key={i} name={day.name} index={i} days={days} daysNumbers={daysNumbers}
                   isSelected={day.selected} loading={loading} setDays={setDays} setDaysNumbers={setDaysNumbers} />
               )
             })}
@@ -71,9 +71,9 @@ export const HabitosPage = () => {
           habits.sort((a, b) => a.id - b.id).map(habit => {
             let counter = 0
             return (
-              <UserHabit key={habit.id}>
+              <UserHabit data-test="habit-container" key={habit.id}>
                 <div>
-                  <h1>{habit.name}</h1>
+                  <h1 data-test="habit-name">{habit.name}</h1>
                   <div>
                     {weekDays.map(day => {
                       let selected = false
@@ -81,11 +81,11 @@ export const HabitosPage = () => {
                         selected = true
                         counter++
                       }
-                      return <Day key={day.id} selected={selected} readOnly>{day.name}</Day>
+                      return <Day data-test="habit-day" key={day.id} selected={selected} readOnly>{day.name}</Day>
                     })}
                   </div>
                 </div>
-                <div onClick={() => deleteHabit(habit.id, habit)}><ion-icon name="trash-outline"></ion-icon></div>
+                <div data-test="habit-delete-btn" onClick={() => deleteHabit(habit.id, habit)}><ion-icon name="trash-outline"></ion-icon></div>
               </UserHabit>
             )
           })

@@ -59,7 +59,6 @@ export const HabitCard = styled.div`
   input {
     background-color: ${({ disable }) => disable ? "#D4D4D4" : "#FFFFFF"};
     color: ${({ disable }) => disable ? "#B3B3B3" : "#666666"};
-    box-sizing: border-box;
     width: 100%;
     height: 45px;
     border: 1px solid #D5D5D5;

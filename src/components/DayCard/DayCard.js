@@ -20,6 +20,6 @@ export const DayCard = ({ name, daysNumbers, setDaysNumbers, index, loading, day
   }
 
   return (
-    <Day disabled={loading} onClick={() => chooseDay(index)} selected={selected}>{name}</Day>
+    <Day data-test="habit-day" disabled={loading} onClick={() => chooseDay(index)} selected={selected}>{name}</Day>
   )
 }

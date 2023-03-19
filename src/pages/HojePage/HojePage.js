@@ -1,5 +1,6 @@
 import axios from "axios"
 import dayjs from "dayjs"
+import "dayjs/locale/pt-br"
 import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { ThreeDots } from "react-loader-spinner"
@@ -33,8 +34,11 @@ export const HojePage = () => {
   const weekDayNames = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta"]
   const { progress, updateProgress } = useContext(ProgressContext)
   const navigate = useNavigate()
-  // const dayMonth = biblioteca.format('DD/MM')
-  // const weekDay = biblioteca.format('dddd')
+  dayjs.locale('pt-br');
+  const biblioteca = dayjs();
+  const weekdDayFormat = biblioteca.format('dddd')
+  const dayMonthFormat = biblioteca.format('DD/MM')
+  
 
   useEffect(() => {
     axios.get(`${BASE_URL}/habits/today`, config(user))
@@ -43,13 +47,13 @@ export const HojePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  function formatDate() {
-    const weekDay = weekDayNames.find((_, i) => i === dayjs().day())
-    const day = dayjs().date()
-    let month = dayjs().month()
-    month < 10 ? month = `0${month + 1}` : month = month + 1
-    return `${weekDay}, ${day}/${month}`
-  }
+  // function formatDate() {
+  //   const weekDay = weekDayNames.find((_, i) => i === dayjs().day())
+  //   const day = dayjs().date()
+  //   let month = dayjs().month()
+  //   month < 10 ? month = `0${month + 1}` : month = month + 1
+  //   return `${weekDay}, ${day}/${month}`
+  // }
 
   function unCheckOrCheckHabit(id, done, setDisable, index) {
     todayHabits[index].done = !todayHabits[index].done
@@ -65,7 +69,7 @@ export const HojePage = () => {
 
   return (
     <HojeContainer>
-      <h1 data-test="today">{formatDate}</h1>
+      <h1 data-test="today">{weekdDayFormat}, {dayMonthFormat}</h1>
       {loading ? <ThreeDots color="#126BA5" height={50} width={50} /> : ""}
       {!loading ? progress === 0 || todayHabits.length === 0 ? <h3 data-test="today-counter">Nenhum hábito concluído ainda</h3> : <h3 data-test="today-counter" className="progress">{progress}% dos hábitos concluidos </h3> : ""}
       {!loading ? todayHabits.length === 0 ? <p data-test="today-counter">Nenhum habito para este dia...</p> : (

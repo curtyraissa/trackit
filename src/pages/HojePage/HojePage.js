@@ -20,7 +20,12 @@ function Track({ habit, sequence, record, done, markHabit }) {
         <p data-test="today-habit-sequence">Sequência atual: <span>{sequence} dias</span></p>
         <p data-test="today-habit-record">Seu recorde: <span className="record">{record} dias</span></p>
       </div>
-      <button data-test="today-habit-check-btn" onClick={() => { setDisable(true); markHabit(setDisable); }} disabled={disable}>
+      <button data-test="today-habit-check-btn"
+        onClick={() => {
+          setDisable(true)
+          markHabit(setDisable)
+        }}
+        disabled={disable}>
         <img data-test="today-habit-check-btn" src={check} alt="check" />
       </button>
     </TrackCard>
@@ -37,11 +42,11 @@ export const HojePage = () => {
   const lib = dayjs();
   const weekdDayFormat = lib.format('dddd')
   const dayMonthFormat = lib.format('DD/MM')
-  
+
   useEffect(() => {
     axios.get(`${BASE_URL}/habits/today`, config(user))
-    .then(res => { setTodayHabits(res.data); setLoading(false) })
-    .catch(err => console.log(err.response.data.message))
+      .then(res => { setTodayHabits(res.data); setLoading(false) })
+      .catch(err => console.log(err.response.data.message))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -65,7 +70,13 @@ export const HojePage = () => {
       {!loading ? todayHabits.length === 0 ? <p data-test="today-counter">Nenhum habito para este dia...</p> : (
         <div data-test="today-habit-container">
           {todayHabits.map((today, i) =>
-            <Track key={today.id} habit={today.name} sequence={today.currentSequence} record={today.highestSequence} done={today.done}
+            <Track
+              data-test="today-habit-check-btn"
+              key={today.id}
+              habit={today.name}
+              sequence={today.currentSequence}
+              record={today.highestSequence}
+              done={today.done}
               markHabit={(setDisable) => unCheckOrCheckHabit(today.id, today.done, setDisable, i)} />)}
         </div>
       ) : ""}

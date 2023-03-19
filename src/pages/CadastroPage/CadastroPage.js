@@ -19,9 +19,8 @@ export const CadastroPage = () => {
       setLoading(false)
       navigate("/")
     })
-      .catch(err => {
-      alert(`Preencha os campos corretamente! ${err.response.data.message}`)
-      setLoading(true)
+      .catch(err => { alert(err.response.data.message) (setLoading(loading))
+      setLoading(!loading) 
     })
   }
 

@@ -14,14 +14,14 @@ export const CadastroPage = () => {
   function signUpUser(e) {
     e.preventDefault()
     setLoading(true)
-    const promise = axios.post(`${BASE_URL}/auth/sign-up`, signUp)
-    promise.then(() => {
+    axios.post(`${BASE_URL}/auth/sign-up`, signUp)
+      .then(() => {
       setLoading(false)
       navigate("/")
     })
-    promise.catch(res => {
-      alert(`Preencha os campos corretamente! ${res.response.data.details[0]}`)
-      setLoading(false)
+      .catch(err => {
+      alert(`Preencha os campos corretamente! ${err.response.data.message}`)
+      setLoading(true)
     })
   }
 

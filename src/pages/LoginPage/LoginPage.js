@@ -16,14 +16,14 @@ export const LoginPage = () => {
   function signInUser(e) {
     e.preventDefault()
     setLoading(true)
-    const promise = axios.post(`${BASE_URL}/auth/login`, signIn)
-    promise.then(res => {
+    axios.post(`${BASE_URL}/auth/login`, signIn)
+      .then(res => {
       setLoading(false)
       setUser({ image: res.data.image, token: res.data.token })
       navigate("/hoje")
     })
-    promise.catch(res => {
-      alert(`Preencha os campos corretamente! ${res.response.data.message}`)
+      .catch(err => {
+      alert(`Preencha os campos corretamente! ${err.response.data.message}`)
       setLoading(false)
     })
   }

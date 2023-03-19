@@ -18,8 +18,8 @@ export const Footer = () => {
   }, [])
 
   function getTodayHabits() {
-    const promise = axios.get(`${BASE_URL}/habits/today`, config(user))
-    promise.then(res => getProgress(res.data))
+    axios.get(`${BASE_URL}/habits/today`, config(user))
+        .then(res => getProgress(res.data))
   }
 
   return (

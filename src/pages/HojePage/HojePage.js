@@ -40,8 +40,8 @@ export const HojePage = () => {
   }, [])
 
   function getTodayHabits() {
-    const promise = axios.get(`${BASE_URL}/habits/today`, config(user))
-    promise.then(res => { setTodayHabits(res.data); setLoading(false); })
+    axios.get(`${BASE_URL}/habits/today`, config(user))
+      .then(res => { setTodayHabits(res.data); setLoading(false); })
   }
 
   function formatDate() {
@@ -59,9 +59,9 @@ export const HojePage = () => {
     done ? updateProgress(true) : updateProgress(true, true)
     setTodayHabits([...todayHabits])
     const isDone = done ? "uncheck" : "check"
-    const promise = axios.post(`${BASE_URL}/habits/${id}/${isDone}`, {}, config(user))
-    promise.then(() => { setDisable(false); })
-    promise.catch(res => { alert(`Oops! algo deu errado...${res.response.data.message}`); navigate("/"); })
+    axios.post(`${BASE_URL}/habits/${id}/${isDone}`, {}, config(user))
+      .then(() => { setDisable(false); })
+      .catch(err => { alert(`Oops! algo deu errado...${err.response.data.message}`); navigate("/"); })
   }
 
   return (

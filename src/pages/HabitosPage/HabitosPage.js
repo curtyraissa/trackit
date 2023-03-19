@@ -21,11 +21,14 @@ export const HabitosPage = () => {
   const [initialLoading, setInitialLoading] = useState(true)
 
   useEffect(() => {
-    getHabits()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    axios.get(`${BASE_URL}/habits`, config(user))
+      .then(res => { 
+        setHabits(res.data) 
+        setInitialLoading(false);
+      })
+      .catch(err => console.log(err.response.data.message))
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const getHabits = () => axios.get(`${BASE_URL}/habits`, config(user)).then(res => { setHabits(res.data); setInitialLoading(false); })
 
   function deleteHabit(id, habitDelete) {
     if (window.confirm("Deseja deletar este habito ?")) {

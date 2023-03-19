@@ -13,14 +13,11 @@ export const Footer = () => {
   const { user } = useContext(UserContext)
 
   useEffect(() => {
-    getTodayHabits()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  function getTodayHabits() {
     axios.get(`${BASE_URL}/habits/today`, config(user))
-        .then(res => getProgress(res.data))
-  }
+      .then(res => getProgress(res.data))
+      .catch(err => console.log(err.response.data.message))
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <FooterContainer data-test="menu">

@@ -75,12 +75,12 @@ export const HabitCard = styled.div`
 export const Day = styled.button`
   background-color: ${({ selected }) => selected ? "#cfcfcf" : "#FFFFFF"};
   color: ${({ selected }) => selected ? "#FFFFFF" : "#dbdbdb"};
+  border: 1px solid #D5D5D5;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30px;
- height: 30px;
-  border: 1px solid #D5D5D5;
+  height: 30px;
   border-radius: 5px;
   font-size: 20px;
   margin-right: 4px;
@@ -110,11 +110,11 @@ export const Buttons = styled.div`
     margin-right: 15px;
   }
   button:last-child {
+    color: #FFFFFF;
+    background-color: #52B6FF;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #FFFFFF;
-    background-color: #52B6FF;
   }
   button:hover {
     filter: brightness(0.9);
@@ -129,12 +129,12 @@ export const Message = styled.div`
 `
 
 export const UserHabit = styled.div`
+  background-color: #FFFFFF;
   display: flex;
   justify-content: space-between;
   width: 340px;
   min-height: 91px;
   margin-left: 17px;
-  background-color: #FFFFFF;
   margin-bottom: 10px;
   box-sizing: border-box;
   padding: 15px;

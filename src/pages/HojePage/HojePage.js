@@ -35,14 +35,11 @@ export const HojePage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    getTodayHabits()
+    axios.get(`${BASE_URL}/habits/today`, config(user))
+    .then(res => { setTodayHabits(res.data); setLoading(false) })
+    .catch(err => console.log(err.response.data.message))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  function getTodayHabits() {
-    axios.get(`${BASE_URL}/habits/today`, config(user))
-      .then(res => { setTodayHabits(res.data); setLoading(false); })
-  }
 
   function formatDate() {
     const weekDay = weekDayNames.find((_, i) => i === dayjs().day())

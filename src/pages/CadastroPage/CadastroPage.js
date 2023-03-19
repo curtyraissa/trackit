@@ -16,12 +16,13 @@ export const CadastroPage = () => {
     setLoading(true)
     axios.post(`${BASE_URL}/auth/sign-up`, signUp)
       .then(() => {
-      setLoading(false)
-      navigate("/")
-    })
-      .catch(err => { alert(err.response.data.message) (setLoading(loading))
-      setLoading(!loading) 
-    })
+        setLoading(false)
+        navigate("/")
+      })
+      .catch(err => {
+        alert(err.response.data.message)(setLoading(loading))
+        setLoading(!loading)
+      })
   }
 
   return (

@@ -1,7 +1,7 @@
 import { HistoricoContainer } from "./HistoricoStyle";
 
 export const HistoricoPage = () => {
- 
+
   return (
     <HistoricoContainer>
       <h1>Histórico</h1>

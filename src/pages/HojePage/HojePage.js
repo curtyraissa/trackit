@@ -31,29 +31,19 @@ export const HojePage = () => {
   const [todayHabits, setTodayHabits] = useState([])
   const [loading, setLoading] = useState(true)
   const { user } = useContext(UserContext)
-  const weekDayNames = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta"]
   const { progress, updateProgress } = useContext(ProgressContext)
   const navigate = useNavigate()
   dayjs.locale('pt-br');
-  const biblioteca = dayjs();
-  const weekdDayFormat = biblioteca.format('dddd')
-  const dayMonthFormat = biblioteca.format('DD/MM')
+  const lib = dayjs();
+  const weekdDayFormat = lib.format('dddd')
+  const dayMonthFormat = lib.format('DD/MM')
   
-
   useEffect(() => {
     axios.get(`${BASE_URL}/habits/today`, config(user))
     .then(res => { setTodayHabits(res.data); setLoading(false) })
     .catch(err => console.log(err.response.data.message))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  // function formatDate() {
-  //   const weekDay = weekDayNames.find((_, i) => i === dayjs().day())
-  //   const day = dayjs().date()
-  //   let month = dayjs().month()
-  //   month < 10 ? month = `0${month + 1}` : month = month + 1
-  //   return `${weekDay}, ${day}/${month}`
-  // }
 
   function unCheckOrCheckHabit(id, done, setDisable, index) {
     todayHabits[index].done = !todayHabits[index].done

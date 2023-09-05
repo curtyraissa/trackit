@@ -5,10 +5,11 @@
 ![Imagem 1](./layout-projeto.png "Imagem 1")
 
 <hr/>
+
 ## 💻 &nbsp;Como usar
 
 - Clone o repositório para sua máquina:
-    - git clone https://github.com/curtyraissa/trackit.git
+    - git clone https://github.com/seu-usuario/trackit.git
     - cd trackit
 
 - Instale as dependências do projeto:
@@ -20,6 +21,7 @@
 
     Acesse o projeto em seu navegador em http://localhost:3000.
 <hr/>
+
 ## ✅ &nbsp;Sobre
 
 - Tela de Login (rota /)
@@ -78,7 +80,7 @@
 
 <hr/>
 
-## 💬 &nbsp;Contact
+## 💬 &nbsp;Contatos
 <img align="left" src="https://avatars.githubusercontent.com/curtyraissa?size=100">
 
 Feito por [Raissa Curty](https://github.com/curtyraissa)!

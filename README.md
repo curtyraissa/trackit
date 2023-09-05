@@ -1,10 +1,11 @@
 <h1 align="center">Track it</h1>
- Uma aplicação completa de acompanhamento de hábitos, com cadastro, login e muitas bibliotecas. Acompanhe e forme hábitos de forma eficaz com o TrackIt!
-<br></br>
 
 ![Imagem 1](./layout-projeto.png "Imagem 1")
 
-<hr/>
+<br></br>
+
+ ## 📝 Sobre
+ Uma aplicação completa de acompanhamento de hábitos, com cadastro, login e muitas bibliotecas. Acompanhe e forme hábitos de forma eficaz com o TrackIt!
 
 ## 💻 &nbsp;Como usar
 
@@ -22,7 +23,7 @@
     Acesse o projeto em seu navegador em http://localhost:3000.
 <hr/>
 
-## ✅ &nbsp;Sobre
+## ✅ &nbsp;Rotas
 
 - Tela de Login (rota /)
     - Envio de email e senha para a API conforme documentação.

@@ -5,7 +5,7 @@
 ![Imagem 1](./layout-projeto.png "Imagem 1")
 
 <hr/>
-💻 Como Rodar:
+## 💻 &nbsp;Como usar
 
 - Clone o repositório para sua máquina:
     - git clone https://github.com/curtyraissa/trackit.git
@@ -20,7 +20,7 @@
 
     Acesse o projeto em seu navegador em http://localhost:3000.
 <hr/>
-✅ Sobre
+## ✅ &nbsp;Sobre
 
 - Tela de Login (rota /)
     - Envio de email e senha para a API conforme documentação.
@@ -59,7 +59,7 @@
     - Exibição de texto conforme layout.
 <hr/>
 
-## 🛠 &nbsp;Skills
+## 🛠 &nbsp;Tecnologias
 <div align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" width="52" alt="react logo"  />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" width="52" alt="js logo"  />
